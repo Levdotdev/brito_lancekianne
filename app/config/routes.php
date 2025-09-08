@@ -43,10 +43,10 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 |
 */
 
-$router->get('/', 'CrudController::index');
-$router->get('/trash', 'CrudController::trash');
-$router->match('/create', 'CrudController::create', ['GET', 'POST']);
-$router->match('/update/{id}', 'CrudController::update', ['GET', 'POST']);
-$router->match('/delete/{id}', 'CrudController::delete', ['GET', 'POST']);
-$router->match('/restore/{id}', 'CrudController::restore', ['GET', 'POST']);
-$router->match('/soft-delete/{id}', 'CrudController::soft_delete', ['GET', 'POST']);
+$router->get('', 'CrudController::index');
+$router->get('trash', 'CrudController::trash');
+$router->match('create', 'CrudController::create', ['GET', 'POST']);
+$router->match('update/{id}', 'CrudController::update', ['GET', 'POST']);
+$router->match('delete/{id}', 'CrudController::delete', ['GET', 'POST']);
+$router->match('restore/{id}', 'CrudController::restore', ['GET', 'POST']);
+$router->match('soft-delete/{id}', 'CrudController::soft_delete', ['GET', 'POST']);
