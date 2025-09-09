@@ -34,7 +34,7 @@
     </table>
 
     <div class="btn-links">
-        <a href="<?= base_url('create'); ?>" class="btn btn-create">+ Create Record</a>
+        <a href="<?= site_url('create'); ?>" class="btn btn-create">+ Create Record</a>
         <a href="<?= site_url('trash'); ?>" class="btn btn-bin">🗑️ Trash Bin</a>
     </div>
 </body>
