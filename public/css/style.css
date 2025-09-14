@@ -55,6 +55,12 @@ tbody tr:hover {
 .btn-create { background: #007bff; }
 .btn-bin    { background: #6c757d; }
 
+.btn-update:hover { background: #28a745; }
+.btn-delete:hover { background: #dc3545; }
+.btn-trash:hover  { background: #ff9800; }
+.btn-create:hover { background: #007bff; }
+.btn-bin:hover    { background: #6c757d; }
+
 body {
 font-family: "Segoe UI", Tahoma, sans-serif;
     background: #f4f6f9;
