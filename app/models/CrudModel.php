@@ -17,4 +17,62 @@ class CrudModel extends Model {
     {
         parent::__construct();
     }
+
+    public function page_home($q, $records_per_page = null, $page = null) {
+        if (is_null($page)) {
+            return $this->db->table('genshin')->get_all();
+        } else {
+            $query = $this->db->table('genshin');
+                
+            // Build LIKE conditions
+
+	    $query->grouped(function($x) use ($q) {
+		    $x->like('id', '%'.$q.'%')
+                ->or_like('name', '%'.$q.'%')
+                ->or_like('class', '%'.$q.'%');
+	    })
+	    ->where_null('deleted_at');
+
+
+            // Clone before pagination
+            $countQuery = clone $query;
+
+            $data['total_rows'] = $countQuery->select_count('*', 'count')
+                                            ->get()['count'];
+
+            $data['records'] = $query->pagination($records_per_page, $page)
+                                    ->get_all();
+
+            return $data;
+        }
+    }
+
+    public function page_trash($q, $records_per_page = null, $page = null) {
+        if (is_null($page)) {
+            return $this->db->table('genshin')->get_all();
+        } else {
+            $query = $this->db->table('genshin');
+                
+            // Build LIKE conditions
+
+	    $query->grouped(function($x) use ($q) {
+		    $x->like('id', '%'.$q.'%')
+                ->or_like('name', '%'.$q.'%')
+                ->or_like('class', '%'.$q.'%');
+	    })
+	    ->where_not_null('deleted_at');
+
+
+            // Clone before pagination
+            $countQuery = clone $query;
+
+            $data['total_rows'] = $countQuery->select_count('*', 'count')
+                                            ->get()['count'];
+
+            $data['records'] = $query->pagination($records_per_page, $page)
+                                    ->get_all();
+
+            return $data;
+        }
+    }
 }

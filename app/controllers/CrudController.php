@@ -15,7 +15,31 @@ class CrudController extends Controller {
     }
 
     public function index(){
-        $data['chars'] = $this->CrudModel->all();
+        $page = 1;
+        if(isset($_GET['page']) && ! empty($_GET['page'])) {
+            $page = $this->io->get('page');
+        }
+
+        $q = '';
+        if(isset($_GET['q']) && ! empty($_GET['q'])) {
+            $q = trim($this->io->get('q'));
+        }
+
+        $records_per_page = 5;
+
+        $all = $this->CrudModel->page_home($q, $records_per_page, $page);
+        $data['all'] = $all['records'];
+        $total_rows = $all['total_rows'];
+        $this->pagination->set_options([
+            'first_link'     => '⏮ First',
+            'last_link'      => 'Last ⏭',
+            'next_link'      => 'Next →',
+            'prev_link'      => '← Prev',
+            'page_delimiter' => '&page='
+        ]);
+        $this->pagination->set_theme('bootstrap'); // or 'tailwind', or 'custom'
+        $this->pagination->initialize($total_rows, $records_per_page, $page,'?q='.$q);
+        $data['page'] = $this->pagination->paginate();
         $this->call->view('home', $data);
     }
 
@@ -67,7 +91,31 @@ class CrudController extends Controller {
     }
 
     function trash(){
-        $data['chars'] = $this->CrudModel->raw('SELECT * FROM genshin WHERE deleted_at IS NOT NULL')->fetchAll();
+        $page = 1;
+        if(isset($_GET['page']) && ! empty($_GET['page'])) {
+            $page = $this->io->get('page');
+        }
+
+        $q = '';
+        if(isset($_GET['q']) && ! empty($_GET['q'])) {
+            $q = trim($this->io->get('q'));
+        }
+
+        $records_per_page = 5;
+
+        $all = $this->CrudModel->page_trash($q, $records_per_page, $page);
+        $data['all'] = $all['records'];
+        $total_rows = $all['total_rows'];
+        $this->pagination->set_options([
+            'first_link'     => '⏮ First',
+            'last_link'      => 'Last ⏭',
+            'next_link'      => 'Next →',
+            'prev_link'      => '← Prev',
+            'page_delimiter' => '&page='
+        ]);
+        $this->pagination->set_theme('bootstrap'); // or 'tailwind', or 'custom'
+        $this->pagination->initialize($total_rows, $records_per_page, $page,'trash/?q='.$q);
+        $data['page'] = $this->pagination->paginate();
         $this->call->view('trash', $data);
     }
 
