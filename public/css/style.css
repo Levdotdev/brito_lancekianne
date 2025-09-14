@@ -55,11 +55,11 @@ tbody tr:hover {
 .btn-create { background: #007bff; }
 .btn-bin    { background: #6c757d; }
 
-.btn-update:hover { background: #28a745; }
-.btn-delete:hover { background: #dc3545; }
-.btn-trash:hover  { background: #ff9800; }
-.btn-create:hover { background: #007bff; }
-.btn-bin:hover    { background: #6c757d; }
+.btn-update:hover { background: #28a745; color: white;}
+.btn-delete:hover { background: #dc3545; color: white;}
+.btn-trash:hover  { background: #ff9800; color: white;}
+.btn-create:hover { background: #007bff; color: white;}
+.btn-bin:hover    { background: #6c757d; color: white;}
 
 body {
 font-family: "Segoe UI", Tahoma, sans-serif;
