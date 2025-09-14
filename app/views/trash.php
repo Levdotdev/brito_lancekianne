@@ -32,7 +32,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach(html_escape($chars) as $char): ?>
+            <?php foreach(html_escape($all) as $char): ?>
                 <tr>
                     <td><?= $char['id']; ?></td>
                     <td><?= $char['name']; ?></td>
