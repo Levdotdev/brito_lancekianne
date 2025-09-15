@@ -9,7 +9,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="<?= base_url();?>public/css/style.css">
 </head>
-<body style="background-image: url('<?= base_url()?>public/resources/jenshin.gif'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+<body style="background-image: url('<?= base_url();?>public/resources/jenshin.gif'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
     <div class="container mt-3 ">
 	<form action="<?=site_url('');?>" method="get" class="col-sm-4 float-end d-flex">
 		<?php
@@ -26,6 +26,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Image</th>
                 <th>Character</th>
                 <th>Element</th>
                 <th>Action</th>
@@ -35,12 +36,13 @@
             <?php foreach(html_escape($all) as $char): ?>
                 <tr>
                     <td><?= $char['id']; ?></td>
+                    <td style="display:flex; justify-content:center; align-items:center;"><img src="<?=base_url().'public/'.$char['pic'];?>" height="60" width="60" alt="<?=$char['name'];?>"></td>
                     <td><?= $char['name']; ?></td>
                     <td><?= $char['class']; ?></td>
                     <td>
                         <a href="<?= site_url('update/'.$char['id']); ?>" class="btn btn-update">Update</a>
                         <a href="<?= site_url('soft-delete/'.$char['id']); ?>" class="btn btn-trash">Trash</a>
-                        <a href="<?= site_url('delete/'.$char['id']); ?>" class="btn btn-delete">Delete</a>
+                        <a href="<?= site_url('delete-home/'.$char['id']); ?>" class="btn btn-delete">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

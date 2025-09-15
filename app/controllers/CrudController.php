@@ -48,11 +48,24 @@ class CrudController extends Controller {
         if($this->io->method() == 'post'){
             $name = $this->io->post('name');
             $class = $this->io->post('class');
-            $data = [
+
+            $this->call->library('upload', $_FILES["fileToUpload"]);
+		    $this->upload
+			->max_size(5)
+			//->min_size(1)
+			->set_dir('uploads')
+			->allowed_extensions(array('png', 'jpg'))
+			->allowed_mimes(array('image/png', 'image/jpeg'))
+			->is_image()
+			->encrypt_name();
+
+            if($this->upload->do_upload()){
+                $data = [
                 'name' => $name,
-                'class' => $class
+                'class' => $class,
+                'pic' => $this->upload->get_filename()
             ];
-            if($this->CrudModel->insert($data)){
+                $this->CrudModel->insert($data);
                 redirect();
             }
         }
@@ -67,11 +80,24 @@ class CrudController extends Controller {
         if($this->io->method() == 'post'){
             $name = $this->io->post('name');
             $class = $this->io->post('class');
-            $data = [
+
+            $this->call->library('upload', $_FILES["fileToUpload"]);
+		    $this->upload
+			->max_size(5)
+			//->min_size(1)
+			->set_dir('uploads')
+			->allowed_extensions(array('png', 'jpg'))
+			->allowed_mimes(array('image/png', 'image/jpeg'))
+			->is_image()
+			->encrypt_name();
+
+            if($this->upload->do_upload()){
+                $data = [
                 'name' => $name,
-                'class' => $class
+                'class' => $class,
+                'pic' => $this->upload->get_filename()
             ];
-            if($this->CrudModel->update($id, $data)){
+                $this->CrudModel->update($id, $data);
                 redirect();
             }
         }
@@ -80,9 +106,14 @@ class CrudController extends Controller {
         }
     }
 
-    function delete($id){
+    function delete_home($id){
         $this->CrudModel->delete($id);
         redirect();
+    }
+
+    function delete_trash($id){
+        $this->CrudModel->delete($id);
+        redirect('trash');
     }
 
     function soft_delete($id){
