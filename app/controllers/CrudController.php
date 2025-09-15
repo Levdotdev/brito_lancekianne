@@ -53,7 +53,7 @@ class CrudController extends Controller {
 		    $this->upload
 			->max_size(5)
 			//->min_size(1)
-			->set_dir('public')
+			->set_dir('uploads')
 			->allowed_extensions(array('png', 'jpg'))
 			->allowed_mimes(array('image/png', 'image/jpeg'))
 			->is_image()

@@ -36,7 +36,7 @@
             <?php foreach(html_escape($all) as $char): ?>
                 <tr>
                     <td><?= $char['id']; ?></td>
-                    <td style="display:flex; justify-content:center; align-items:center;"><img src="<?=base_url().'public/'.$char['pic'];?>" height="60" width="60" alt="<?=$char['name'];?>"></td>
+                    <td style="display:flex; justify-content:center; align-items:center;"><img src="<?=base_url().'uploads/'.$char['pic'];?>" height="60" width="60" alt="<?=$char['name'];?>"></td>
                     <td><?= $char['name']; ?></td>
                     <td><?= $char['class']; ?></td>
                     <td>
