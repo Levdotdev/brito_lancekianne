@@ -31,7 +31,8 @@ class CrudModel extends Model {
                 ->or_like('name', '%'.$q.'%')
                 ->or_like('class', '%'.$q.'%');
 	    })
-	    ->where_null('deleted_at');
+	    ->where_null('deleted_at')
+        ->order_by('id', 'DESC');
 
 
             // Clone before pagination
@@ -60,7 +61,8 @@ class CrudModel extends Model {
                 ->or_like('name', '%'.$q.'%')
                 ->or_like('class', '%'.$q.'%');
 	    })
-	    ->where_not_null('deleted_at');
+	    ->where_not_null('deleted_at')
+        ->order_by('deleted_at', 'DESC');
 
 
             // Clone before pagination
