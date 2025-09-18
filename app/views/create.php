@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genshin CRUD-pact</title>
     <link rel="icon" type="image/x-icon" href="<?= base_url();?>public/resources/logo.jpg">
-    <link rel="stylesheet" href="<?= base_url();?>public/css/style.css">
+    <link rel="stylesheet" href="<?= base_url();?>public/css/home.css">
 </head>
 <body style="background-image: url('<?= base_url();?>public/resources/jenshin.gif'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
     <h1>Insert Character</h1>

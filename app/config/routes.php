@@ -43,11 +43,21 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 |
 */
 
-$router->get('/', 'CrudController::index');
+$router->get('/', 'Auth::index');
+$router->get('/home', 'CrudController::index');
 $router->get('/trash', 'CrudController::trash');
 $router->match('/create', 'CrudController::create', ['GET', 'POST']);
+$router->match('/upload', 'CrudController::upload', ['GET', 'POST']);
 $router->match('/update/{id}', 'CrudController::update', ['GET', 'POST']);
 $router->match('/delete-home/{id}', 'CrudController::delete_home', ['GET', 'POST']);
 $router->match('/delete-trash/{id}', 'CrudController::delete_trash', ['GET', 'POST']);
 $router->match('/restore/{id}', 'CrudController::restore', ['GET', 'POST']);
 $router->match('/soft-delete/{id}', 'CrudController::soft_delete', ['GET', 'POST']);
+
+$router->group('/auth', function() use ($router){
+    $router->match('/register', 'Auth::register', ['POST', 'GET']);
+    $router->match('/login', 'Auth::login', ['POST', 'GET']);
+    $router->get('/logout', 'Auth::logout');
+    $router->match('/password-reset', 'Auth::password_reset', ['POST', 'GET']);
+    $router->match('/set-new-password', 'Auth::set_new_password', ['POST', 'GET']);
+});
