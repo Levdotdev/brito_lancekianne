@@ -11,7 +11,7 @@
 </head>
 <body style="background-image: url('<?= base_url();?>public/resources/jenshin.gif'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
     <div class="container mt-3 ">
-	<form action="<?=site_url('');?>" method="get" class="col-sm-4 float-end d-flex">
+	<form action="<?=site_url('home');?>" method="get" class="col-sm-4 float-end d-flex">
 		<?php
 		$q = '';
 		if(isset($_GET['q'])) {
