@@ -79,7 +79,7 @@ $config['ENVIRONMENT']             = 'development';
 | WARNING: You MUST set this value!
 |
 */
-$config['base_url'] 				= 'webdev-britolancekianne.page.gd/';
+$config['base_url'] 				= '/';
 
 /*
 |--------------------------------------------------------------------------
