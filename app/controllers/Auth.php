@@ -87,8 +87,8 @@ class Auth extends Controller {
 		$template = str_replace($search, $replace, $template);
 		$this->email->recipient($email);
 		$this->email->subject('LavaLust Reset Password'); //change based on subject
-		$this->email->sender('sample@email.com'); //change based on sender email
-		$this->email->reply_to('sample@email.com'); // change based on sender email
+		$this->email->sender('genshinpromise@gmail.com'); //change based on sender email
+		$this->email->reply_to('genshinpromise@gmail.com.com'); // change based on sender email
 		$this->email->email_content($template, 'html');
 		$this->email->send();
 	}
